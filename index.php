@@ -1,17 +1,14 @@
-<?php
-    $lengthPassword =$_GET['length'];
-    $characters ='ABCDEFGHIKLMNOPQRSTUVXYZabcdefghiklmnopqrstuvxyz1234567890@!?_-&%';
-    function createPw($lengthPassword,$characters) {
-        $newPass='';
-        for($i=0; $i< $lengthPassword; $i++){
-            $character=$characters[rand(0, strlen($characters))];
-            newPass_push($character);
-        }
-        return $newPass;
-    }
-?>
-
 <!DOCTYPE html>
+<?php
+    require_once __DIR__ .'/function.php';
+    
+    //controllo se non è nullo e se è un numero
+    if($lengthPassword!== null && is_numeric($lengthPassword)){
+        $password = createPw($lengthPassword);
+
+        $text_result ="La password generata è: $password";
+    };
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,9 +23,11 @@
             <input type="text" name="length" placeholder="Lunghezza password">
             <button type="submit">Invia</button>
         </form>
-        <p><?php echo $lengthPassword; ?></p>
-        <p><?php echo $characters; ?></p>
-        <p><?php echo createPw($lengthPassword,$characters); ?></p>
+        <div class="result">
+            <!-- se il risultato esiste lo stampo altrimenti stampo un avviso -->
+            <h2><?php echo isset($text_result) ? $text_result : 'Impossibile generare password'; ?></h2>
+        </div>
+        
     </main>
 </body>
 </html>
