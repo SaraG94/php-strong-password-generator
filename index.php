@@ -5,7 +5,7 @@
         $newPass='';
         for($i=0; $i< $lengthPassword; $i++){
             $character=$characters[rand(0, strlen($characters))];
-            $newPass_push($character);
+            newPass_push($character);
         }
         return $newPass;
     }
@@ -27,6 +27,7 @@
             <button type="submit">Invia</button>
         </form>
         <p><?php echo $lengthPassword; ?></p>
+        <p><?php echo $characters; ?></p>
         <p><?php echo createPw($lengthPassword,$characters); ?></p>
     </main>
 </body>
