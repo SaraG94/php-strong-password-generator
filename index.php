@@ -1,3 +1,16 @@
+<?php
+    $lengthPassword =$_GET['length'];
+    $characters ='ABCDEFGHIKLMNOPQRSTUVXYZabcdefghiklmnopqrstuvxyz1234567890@!?_-&%';
+    function createPw($lengthPassword,$characters) {
+        $newPass='';
+        for($i=0; $i< $lengthPassword; $i++){
+            $character=$characters[rand(0, strlen($characters))];
+            $newPass_push($character);
+        }
+        return $newPass;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +26,8 @@
             <input type="text" name="length" placeholder="Lunghezza password">
             <button type="submit">Invia</button>
         </form>
+        <p><?php echo $lengthPassword; ?></p>
+        <p><?php echo createPw($lengthPassword,$characters); ?></p>
     </main>
 </body>
 </html>
